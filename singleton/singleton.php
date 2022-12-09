@@ -9,15 +9,15 @@
  *  - Third party API where you need to keep the max connection
  *  - File Manipulation
  */
-class DB
+final class DB
 {
 
-    public static $instance;
+    private static $instance = null;
 
     public static function getInstance()
     {
 
-        if (!isset(DB::$instance)) {
+        if (is_null(DB::$instance)) {
             DB::$instance = new DB();
         }
 
@@ -35,6 +35,11 @@ class DB
     }
 
     private function __clone()
+    {
+
+    }
+
+    private function __wakeup()
     {
 
     }
