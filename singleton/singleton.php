@@ -2,6 +2,12 @@
 
 /**
  * Singleton Pattern
+ * Use Cases:
+ *  - Useful for DB Connection
+ *  - Creating a Logger
+ *  - Creating a Profiler
+ *  - Third party API where you need to keep the max connection
+ *  - File Manipulation
  */
 class DB
 {
@@ -16,6 +22,11 @@ class DB
         }
 
         return DB::$instance;
+    }
+
+    public function Query()
+    {
+        return "SELECT * FROM employees";
     }
 
     private function __constructor()
@@ -36,3 +47,5 @@ $db2 = DB::getInstance();
 var_dump($db);
 var_dump($db1);
 var_dump($db2);
+
+echo $db->Query();
